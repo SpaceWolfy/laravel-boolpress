@@ -15,3 +15,5 @@
    -spostare la configurazione di Vue.js in un file dedicato
    -aggiornare il file webpack.mix.js
    -aggiornare la config di vue creando un componente App.vue e passandolo alla funzione render: h => h(App)
+
+<!-- Exercise completed -->
