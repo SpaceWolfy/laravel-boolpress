@@ -10962,3 +10962,143 @@ a.text-dark:focus {
   }
 }
 
+.navigation-bar {
+  background-color: white;
+  height: 62px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 10px 10px -15px #111;
+}
+
+.navigation-bar .my-ul {
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.navigation-bar .my-ul li {
+  border-bottom: 4px solid transparent;
+  padding: 20px 20px;
+  margin: 0 20px;
+}
+
+.navigation-bar .my-ul li:hover {
+  border-bottom: 4px solid #0e7ee7;
+}
+
+.navigation-bar .my-ul li a {
+  text-decoration: none;
+  color: #0e7ee7;
+}
+
+.navigation-bar .my-ul .active {
+  border-bottom: 4px solid #0e7ee7;
+}
+
+.navigation-bar .my-ul .active a {
+  color: #0e7ee7;
+}
+
+/* End section */
+
+.spam-cont {
+  height: 100px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 10px 10px 8px #111;
+  /*     input {
+      background-color: transparent;
+      height: 50px;
+      font-size: 16px;
+      font-weight: 600;
+      border: 2px solid rgb(95, 210, 214);
+      color: white;
+      padding: 0 20px;
+
+      &:hover {
+          background-color: rgb(95, 210, 214);
+          color: rgb(32, 92, 255);
+      }
+  } */
+}
+
+.page-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.page-container .text {
+  line-height: 60px;
+}
+
+.page-container .text .phrase-1 {
+  color: #0e7ee7;
+  -webkit-animation: fade-in 5s infinite;
+          animation: fade-in 5s infinite;
+}
+
+.page-container .text .phrase-2 {
+  color: #0e7ee7;
+  opacity: 0;
+  -webkit-animation: fade-in 5s infinite;
+          animation: fade-in 5s infinite;
+  -webkit-animation-delay: 2.5s;
+          animation-delay: 2.5s;
+}
+
+body {
+  background-color: #e4eeff;
+  font-family: "Roboto", sans-serif;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+li,
+input,
+.btn-main-s {
+  cursor: pointer;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0px;
+  width: 100%;
+}
+

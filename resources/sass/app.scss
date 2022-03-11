@@ -1,8 +1,42 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+
+@import "./partials/headernav";
+@import "./partials/footernav";
+
+@import "homeAdmin";
+
+body {
+    background-color: #e4eeff;
+    font-family: "Roboto", sans-serif;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+}
+
+li,
+input,
+.btn-main-s {
+    cursor: pointer;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0px;
+    width: 100%;
+}

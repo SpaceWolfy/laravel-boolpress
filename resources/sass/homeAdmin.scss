@@ -1,0 +1,31 @@
+.page-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @keyframes fade-in {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+
+    .text {
+        line-height: 60px;
+
+        .phrase-1 {
+            color: rgb(14, 126, 231);
+            animation: fade-in 5s infinite;
+        }
+
+        .phrase-2 {
+            color: rgb(14, 126, 231);
+            opacity: 0;
+            animation: fade-in 5s infinite;
+            animation-delay: 2.5s;
+        }
+    }
+}
