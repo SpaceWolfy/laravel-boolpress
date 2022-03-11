@@ -17,6 +17,10 @@ Auth::routes();
 
 Route::get('/', 'Admin\HomeController@index')->name('home');
 
-Route::get("{any?}", function () {
+Route::get("/logged-in", function () {
   return view("home");
+})->name('login-page');
+
+Route::get("{any?}", function () {
+  return view("vue");
 })->where("any", ".*");
