@@ -15,7 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'Admin\HomeController@index')->name('home');
+/* Route::get('/', 'Admin\HomeController@index')->name('home'); */
+
+Route::middleware("auth")
+  ->namespace("Admin")
+  ->prefix("admin")
+  ->name("admin.")
+  ->group(function () {
+    Route::get('/', 'HomeController@index')->name('admin.homeAdmin');
+  });
 
 Route::get("/logged-in", function () {
   return view("home");
