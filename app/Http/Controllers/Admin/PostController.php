@@ -40,8 +40,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'postTitle' => 'required|min:6|max:15',
-            'postText' => 'required|min:10|max:200'
+            'postTitle' => 'required|min:5|max:50',
+            'postText' => 'required|min:10|max:400'
         ]);
 
         $newPost = new Post();
@@ -117,8 +117,8 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'postTitle' => 'required|min:6|max:15',
-            'postText' => 'required|min:10|max:200'
+            'postTitle' => 'required|min:5|max:50',
+            'postText' => 'required|min:10|max:400'
         ]);
 
         $newPost = Post::findOrFail($id);
@@ -170,6 +170,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return redirect()->route('admin.posts.index');
     }
 }

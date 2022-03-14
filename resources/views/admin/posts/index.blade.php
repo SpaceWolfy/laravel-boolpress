@@ -15,8 +15,20 @@
 
 
       @foreach ($dataPosts as $post)
-        <div class="my-div">{{$post->postTitle}}
-          <a href="{{ route('admin.posts.show', $post->slug) }}">Mostra</a>
+        <div class="my-div">
+          {{$post->postTitle}}
+
+          <div class="my-actions">
+            <a href="{{ route('admin.posts.show', $post->slug) }}">Mostra</a>
+            <a href="{{ route('admin.posts.edit', $post->slug) }}">Modifica</a>
+
+            <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
+              @csrf
+              @method("delete")
+        
+              <button class="my-del-btn">Elimina</button>
+            </form>
+          </div>
         </div>
         <hr class="my-line">
       @endforeach
