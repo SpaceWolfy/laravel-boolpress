@@ -11073,9 +11073,91 @@ a.text-dark:focus {
           animation-delay: 2.5s;
 }
 
+.my-posts-container {
+  width: 1100px;
+  height: 500px;
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+  background-color: white;
+  -o-box-shadow: 5px 5px 10px 0px #0e7ee7;
+  box-shadow: 5px 5px 10px 0px #0e7ee7;
+}
+
+.my-posts-container .my-top-nav {
+  margin: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.my-posts-container .my-top-nav h2 {
+  color: #0e7ee7;
+}
+
+.my-posts-container .my-div {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 30px 0px 30px;
+}
+
+.my-posts-container .my-line {
+  border-bottom: 1px solid #0e7ee7;
+  margin: 5px 30px;
+}
+
+.my-form-cont {
+  width: 800px;
+  height: 500px;
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.my-form-cont form .my-title,
+.my-form-cont form .my-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-form-cont form .my-title label,
+.my-form-cont form .my-text label {
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.my-form-cont form input,
+.my-form-cont form textarea {
+  outline: none;
+  border: 2px solid #0e7ee7;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.my-form-cont .my-form-group {
+  margin-top: 20px;
+}
+
+.my-form-cont .my-form-group .my-btn-save {
+  background-color: #0e7ee7;
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
 body {
   background-color: #e4eeff;
   font-family: "Roboto", sans-serif;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 ul {

@@ -1,0 +1,43 @@
+.my-form-cont {
+    width: 800px;
+    height: 500px;
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    form {
+        .my-title,
+        .my-text {
+            display: flex;
+            flex-direction: column;
+
+            label {
+                font-size: 15px;
+                margin-top: 10px;
+            }
+        }
+
+        input,
+        textarea {
+            outline: none;
+            border: 2px solid rgb(14, 126, 231);
+            border-radius: 5px;
+            padding: 5px;
+        }
+    }
+
+    .my-form-group {
+        margin-top: 20px;
+
+        .my-btn-save {
+            background-color: rgb(14, 126, 231);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+    }
+}
