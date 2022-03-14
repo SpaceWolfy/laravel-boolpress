@@ -23,10 +23,11 @@ Route::middleware("auth")
   ->name("admin.")
   ->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::resource("posts", "PostController");
   });
 
 Route::get("/logged-in", function () {
-  return view("home");
+  return view("account");
 })->name('login-page');
 
 Route::get("{any?}", function () {
