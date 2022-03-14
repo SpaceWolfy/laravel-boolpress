@@ -159,7 +159,7 @@ class PostController extends Controller
 
         $newPost->update($validated);
 
-        return redirect()->route("admin.posts.show", $newPost->id);
+        return redirect()->route("admin.posts.show", $newPost->slug);
     }
 
     /**

@@ -2,7 +2,7 @@
 
 {{-- @dump($array) --}}
 
-@section('pageTitle', 'HomePage')
+@section('pageTitle', 'Posts')
 
 
 @section('content')

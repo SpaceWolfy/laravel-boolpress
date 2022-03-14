@@ -11123,6 +11123,18 @@ a.text-dark:focus {
   margin: 5px 30px;
 }
 
+.my-post-structure {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.my-post-structure .my-title-structure {
+  margin-bottom: 15px;
+}
+
 .my-form-cont {
   width: 800px;
   height: 500px;
@@ -11150,6 +11162,7 @@ a.text-dark:focus {
   border: 2px solid #0e7ee7;
   border-radius: 5px;
   padding: 5px;
+  max-height: 400px;
 }
 
 .my-form-cont .my-form-group {
@@ -11165,6 +11178,8 @@ a.text-dark:focus {
   border-radius: 5px;
   margin-right: 20px;
 }
+
+/* @import "./posts/edit"; */
 
 body {
   background-color: #e4eeff;

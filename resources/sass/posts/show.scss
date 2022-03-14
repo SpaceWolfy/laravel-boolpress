@@ -1,0 +1,11 @@
+.my-post-structure {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    .my-title-structure {
+        margin-bottom: 15px;
+    }
+}
