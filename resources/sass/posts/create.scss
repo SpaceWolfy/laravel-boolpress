@@ -1,7 +1,7 @@
 .my-form-cont {
     width: 800px;
     height: 500px;
-    margin: 140px auto 220px auto;
+    margin: 140px auto 280px auto;
 
     form {
         .my-title,
@@ -16,12 +16,17 @@
         }
 
         input,
-        textarea {
+        textarea,
+        select {
             outline: none;
             border: 2px solid rgb(14, 126, 231);
             border-radius: 5px;
             padding: 5px;
+        }
+
+        textarea {
             max-height: 400px;
+            margin-bottom: 15px;
         }
     }
 

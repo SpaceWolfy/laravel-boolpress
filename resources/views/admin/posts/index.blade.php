@@ -15,7 +15,7 @@
 
 
       @foreach ($dataPosts as $post)
-        <div class="my-div">
+        <div class="my-actions-cont">
           <div>
             {{$post->postTitle}} 
 

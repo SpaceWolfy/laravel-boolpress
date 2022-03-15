@@ -11094,21 +11094,22 @@ a.text-dark:focus {
   color: #0e7ee7;
 }
 
-.my-posts-container .my-div {
+.my-posts-container .my-actions-cont {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   margin: 20px 30px 0px 30px;
 }
 
-.my-posts-container .my-div .my-actions {
+.my-posts-container .my-actions-cont .my-actions {
   display: flex;
 }
 
-.my-posts-container .my-div .my-actions a {
+.my-posts-container .my-actions-cont .my-actions a {
   padding: 0 5px;
 }
 
-.my-posts-container .my-div .my-del-btn {
+.my-posts-container .my-actions-cont .my-del-btn {
   margin-left: 10px;
   color: white;
   background-color: crimson;
@@ -11121,21 +11122,29 @@ a.text-dark:focus {
 }
 
 .my-post-structure {
+  height: 400px;
   margin-top: 30px;
+  padding: 0 120px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
-  align-items: center;
 }
 
 .my-post-structure .my-title-structure {
   margin-bottom: 15px;
+  text-align: center;
+}
+
+.my-post-structure .my-footer-infos {
+  margin: 0 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .my-form-cont {
   width: 800px;
   height: 500px;
-  margin: 140px auto 220px auto;
+  margin: 140px auto 280px auto;
 }
 
 .my-form-cont form .my-title,
@@ -11151,12 +11160,17 @@ a.text-dark:focus {
 }
 
 .my-form-cont form input,
-.my-form-cont form textarea {
+.my-form-cont form textarea,
+.my-form-cont form select {
   outline: none;
   border: 2px solid #0e7ee7;
   border-radius: 5px;
   padding: 5px;
+}
+
+.my-form-cont form textarea {
   max-height: 400px;
+  margin-bottom: 15px;
 }
 
 .my-form-cont .my-form-group {

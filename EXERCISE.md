@@ -17,3 +17,24 @@
    -aggiornare la config di vue creando un componente App.vue e passandolo alla funzione render: h => h(App)
 
 <!-- Exercise completed -->
+
+## Exercise (2):
+
+Per ogni post, indicare l’utente che ha creato il post e la categoria a cui quel post appartiene.
+creare quindi le migration necessarie
+
+-   1 post è scritto da 1 utente,
+-   1 utente può scrivere più post
+-   1 post appartiene ad 1 categoria
+-   1 categoria può essere usato su più post
+
+Replicare le stesse relazioni nei model relativi
+
+Aggiornare le pagine dei post,
+edit e create - far scegliere all’utente la categoria da assegnare al post
+
+nella select, autoselezionare la categoria scelta dall’utente all’apertura della pagina
+
+show - mostriamo il codice della categoria scelta e mostriamo il nome dell’utente che ha scritto il post.
+
+index - mostrare nome utente e categoria per ogni post.
