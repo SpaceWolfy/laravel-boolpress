@@ -38,3 +38,5 @@ nella select, autoselezionare la categoria scelta dall’utente all’apertura d
 show - mostriamo il codice della categoria scelta e mostriamo il nome dell’utente che ha scritto il post.
 
 index - mostrare nome utente e categoria per ogni post.
+
+<!-- Exercise completed -->
