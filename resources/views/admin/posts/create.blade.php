@@ -36,6 +36,16 @@
     @enderror
   </div>
 
+  <div>
+    <label>Categoria del Post:</label>
+    <select name="category_id">
+      <option value=""> - non selezionata - </option> 
+      @foreach ($categoriesAll as $category)
+         <option value="{{$category->id}}" {{(old('category_id') === $category->id) ? 'selected' : ''}}>{{$category->catName}}</option> 
+      @endforeach
+    </select>
+  </div>
+
   <div class="my-form-group">
     <button type="submit" class="my-btn-save">Salva il post</button>
     <a href="{{ route('admin.posts.index') }}" class="">Torna indietro</a>

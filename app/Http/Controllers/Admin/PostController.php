@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -28,7 +30,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view("admin.posts.create");
+        $categoriesAll = Category::all();
+
+        return view("admin.posts.create", compact('categoriesAll'));
     }
 
     /**
@@ -41,8 +45,11 @@ class PostController extends Controller
     {
         $validated = $request->validate([
             'postTitle' => 'required|min:5|max:50',
-            'postText' => 'required|min:10|max:400'
+            'postText' => 'required|min:10|max:400',
+            'category_id' => 'nullable',
         ]);
+
+        /*  dd($validated); */
 
         $newPost = new Post();
         $newPost->fill($validated);
@@ -76,7 +83,8 @@ class PostController extends Controller
 
         /* Assegno il valore slug al post */
         $newPost->slug = $slug;
-        $newPost->save();
+        $newPost->user_id = Auth::user()->id;
+        $newPost->save($validated);
 
         return redirect()->route("admin.posts.index");
     }
@@ -104,7 +112,9 @@ class PostController extends Controller
     {
         $newPost = Post::where("slug", $slugId)->first();
 
-        return view("admin.posts.edit", compact('newPost'));
+        $categoriesAll = Category::all();
+
+        return view("admin.posts.edit", compact('newPost', 'categoriesAll'));
     }
 
     /**
@@ -118,8 +128,11 @@ class PostController extends Controller
     {
         $validated = $request->validate([
             'postTitle' => 'required|min:5|max:50',
-            'postText' => 'required|min:10|max:400'
+            'postText' => 'required|min:10|max:400',
+            'category_id' => 'nullable',
         ]);
+
+        /* dd($validated); */
 
         $newPost = Post::findOrFail($id);
 

@@ -16,7 +16,17 @@
 
       @foreach ($dataPosts as $post)
         <div class="my-div">
-          {{$post->postTitle}}
+          <div>
+            {{$post->postTitle}} 
+
+            @if($post->category !== null)
+            - {{$post->category->catName}}
+            @endif
+
+            <div class="my-personal-info">
+              {{$post->user->name}} - {{$post->created_at}}
+            </div>
+          </div>
 
           <div class="my-actions">
             <a href="{{ route('admin.posts.show', $post->slug) }}">Mostra</a>

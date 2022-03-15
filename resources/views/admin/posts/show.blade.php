@@ -19,6 +19,18 @@
       </div>
       <div class="my-description-structure">{{$newPost->postText}}</div>
     </div>
+
+    <div class="my-footer-infos">
+      <div class="my-author-info">
+        {{$newPost->user->name}} <-> {{$newPost->created_at}}
+      </div>
+
+      @if($newPost->category !== null)
+        <div class="my-category-info">
+          {{$newPost->category->catName}} - {{$newPost->category->catDesc}}
+        </div>
+      @endif
+    </div>
   </div>
 </div>
 @endsection

@@ -36,4 +36,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /* Funzioni di associazione Foreign Keys  */
+
+    public function userInfo()
+    {
+        return $this->hasOne('App\UserInfo');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
 }
