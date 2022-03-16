@@ -53,8 +53,10 @@ index - mostrare nome utente e categoria per ogni post.
 
 -   dalla view edit e create, permettere all’utente di scegliere i tag da associare ad un post, tramite checkbox
 
--   validate i tag inseriti assicurandovi che esistono a DB tramite la validazione apposta
+-   validate i tag inseriti assicurandovi che esistono a DB tramite la validazione apposita
 
 -   in fase di salvataggio, usare “detach()” e “attach()” oppure “sync()”
 
 -   nella SHOW, mostrare i tag per il post corrente.
+
+<!-- Exercise Completed -->
