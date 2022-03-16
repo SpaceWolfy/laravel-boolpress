@@ -40,13 +40,20 @@
   <div class="my-tags-section">
     <div class="my-left-side">
       <h5>Tags</h5>
-      @if ($newPost->tags !== null)
+      {{-- @if ($newPost->tags !== null)
         <ul class="my-tags-list">
           @foreach ($newPost->tags as $tag)
             <li class="my-li-style">{{ $tag->type }}</li>
           @endforeach
         </ul>
-      @endif
+      @endif --}}
+      <ul class="my-tags-list">
+        @forelse ($newPost->tags as $tag) 
+          <li class="my-li-style">{{ $tag->type }}</li>
+        @empty
+          <li class="my-li-style text-center">Nessun Tag selezionato</li>
+        @endforelse
+      </ul>
     </div>
   </div>
 </div>
