@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,8 +32,9 @@ class PostController extends Controller
     public function create()
     {
         $categoriesAll = Category::all();
+        $tags = Tag::all();
 
-        return view("admin.posts.create", compact('categoriesAll'));
+        return view("admin.posts.create", compact('categoriesAll', 'tags'));
     }
 
     /**
@@ -46,7 +48,8 @@ class PostController extends Controller
         $validated = $request->validate([
             'postTitle' => 'required|min:5|max:50',
             'postText' => 'required|min:10|max:400',
-            'category_id' => 'nullable',
+            'category_id' => 'nullable|exists:categories,id',
+            'tags' => 'nullable|exists:tags,id'
         ]);
 
         /*  dd($validated); */
@@ -86,6 +89,12 @@ class PostController extends Controller
         $newPost->user_id = Auth::user()->id;
         $newPost->save($validated);
 
+        //aggiungo le relazion icon i tag ricevuti
+        /* va messo dopo il save altrimenti il post-id non viene trovato in quanto viene assegnato durante il save*/
+        if (key_exists('tags', $validated)) {
+            $newPost->tags()->attach($validated['tags']);
+        }
+
         return redirect()->route("admin.posts.index");
     }
 
@@ -113,8 +122,9 @@ class PostController extends Controller
         $newPost = Post::where("slug", $slugId)->first();
 
         $categoriesAll = Category::all();
+        $tags = Tag::all();
 
-        return view("admin.posts.edit", compact('newPost', 'categoriesAll'));
+        return view("admin.posts.edit", compact('newPost', 'categoriesAll', 'tags'));
     }
 
     /**
@@ -130,6 +140,7 @@ class PostController extends Controller
             'postTitle' => 'required|min:5|max:50',
             'postText' => 'required|min:10|max:400',
             'category_id' => 'nullable',
+            'tags' => 'nullable|exists:tags,id'
         ]);
 
         /* dd($validated); */
@@ -172,6 +183,22 @@ class PostController extends Controller
 
         $newPost->update($validated);
 
+        /* Aggiornamento informazioni tabella post_tag */
+        //Per il post corrente, dalla tabella ponte, vado a rimuovere tutte le relazioni esistenti con i tag
+        /* $newPost->tags()->detach(); */
+
+        //aggiungo le relazion icon i tag ricevuti
+        /* $newPost->tags()->attach($validated['tags']); */
+
+        /* Confronta i dati presenti su db e in caso fa detach(solo degli elementi precedenti) e attach(solo dei nuovi elementi) 
+        - I tag presenti in entrambi i francenti non verranno toccati*/
+
+        if (key_exists('tags', $validated)) {
+            $newPost->tags()->sync($validated['tags']);
+        } else {
+            $newPost->tags()->detach();
+        }
+
         return redirect()->route("admin.posts.show", $newPost->slug);
     }
 
@@ -184,6 +211,9 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
+
+        $post->tags()->detach();
+
         $post->delete();
 
         return redirect()->route('admin.posts.index');
