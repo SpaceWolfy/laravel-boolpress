@@ -19,7 +19,7 @@
         <header class="page-header">@include('partials.headernav')</header>
 
         <main>
-            <div class="container">@yield('content')</div>
+            <div class="my-container">@yield('content')</div>
         </main>
 
         <footer>

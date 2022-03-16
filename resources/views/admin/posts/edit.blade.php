@@ -47,6 +47,25 @@
     </select>
   </div>
 
+  <div class="my-tags-section">
+    <div>Seleziona dei tag: </div>
+    @foreach ($tags as $tag)
+      {{-- <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" value="{{$tag->id}}" id='tag_{{$tag->slug}}' 
+        name='tags[]' --}} {{-- Viene letto come il passaggio di un array di dati dal server --}}
+        {{-- {{$newPost->tags->contains($tag) ? 'checked' : ''}}> --}}
+        {{-- <label class="form-check-label" for='tag_{{$tag->slug}}'>{{$tag->type}}</label>
+      </div> --}}
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-primary" for='tag_{{$tag->slug}}'>
+          <input type="checkbox" autocomplete="off" value="{{$tag->id}}" id='tag_{{$tag->slug}}' 
+          name='tags[]' {{$newPost->tags->contains($tag) ? 'checked' : ''}}> {{$tag->type}}
+        </label>
+      </div>
+    @endforeach
+  </div>
+
   <div class="my-form-group">
     <button type="submit" class="my-btn-save">Salva il post</button>
     <a href="{{ route('admin.posts.index') }}" class="">Torna indietro</a>

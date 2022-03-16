@@ -1,0 +1,16 @@
+.btn-group {
+    .btn-primary {
+        background-color: white;
+        color: rgb(14, 126, 231);
+        border-color: rgb(14, 126, 231);
+
+        &:hover {
+            background-color: rgb(14, 126, 231);
+            color: white;
+        }
+    }
+
+    .btn-primary:not(:disabled):not(.disabled).active {
+        background-color: rgb(14, 126, 231);
+    }
+}

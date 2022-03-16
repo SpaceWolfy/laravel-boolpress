@@ -11121,7 +11121,12 @@ a.text-dark:focus {
   margin: 5px 30px;
 }
 
-.my-post-structure {
+.my-full-cont {
+  display: flex;
+  align-items: center;
+}
+
+.my-full-cont .my-posts-container .my-post-structure {
   height: 400px;
   margin-top: 30px;
   padding: 0 120px;
@@ -11130,21 +11135,50 @@ a.text-dark:focus {
   flex-direction: column;
 }
 
-.my-post-structure .my-title-structure {
+.my-full-cont .my-posts-container .my-post-structure .my-title-structure {
   margin-bottom: 15px;
   text-align: center;
 }
 
-.my-post-structure .my-footer-infos {
+.my-full-cont .my-posts-container .my-post-structure .my-footer-infos {
   margin: 0 20px;
   display: flex;
   justify-content: space-between;
 }
 
+.my-full-cont .my-tags-section {
+  width: 200px;
+  background-color: white;
+  -o-box-shadow: -5px 5px 10px 0px #0e7ee7;
+  box-shadow: -5px 5px 10px 2px #0e7ee7;
+  overflow-y: auto;
+}
+
+.my-full-cont .my-tags-section h5 {
+  text-align: center;
+  margin-top: 10px;
+  color: #0e7ee7;
+}
+
+.my-full-cont .my-tags-section ul {
+  padding: 5px 10px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.my-full-cont .my-tags-section ul li {
+  padding: 5px 0;
+  border-bottom: 1px solid #0e7ee7;
+}
+
+.my-full-cont .my-d-none {
+  display: none;
+}
+
 .my-form-cont {
   width: 800px;
   height: 500px;
-  margin: 140px auto 280px auto;
+  margin: 110px auto 320px auto;
 }
 
 .my-form-cont form .my-title,
@@ -11185,6 +11219,21 @@ a.text-dark:focus {
   padding: 5px 10px;
   border-radius: 5px;
   margin-right: 20px;
+}
+
+.btn-group .btn-primary {
+  background-color: white;
+  color: #0e7ee7;
+  border-color: #0e7ee7;
+}
+
+.btn-group .btn-primary:hover {
+  background-color: #0e7ee7;
+  color: white;
+}
+
+.btn-group .btn-primary:not(:disabled):not(.disabled).active {
+  background-color: #0e7ee7;
 }
 
 /* @import "./posts/edit"; */
