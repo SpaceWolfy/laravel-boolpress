@@ -40,3 +40,21 @@ show - mostriamo il codice della categoria scelta e mostriamo il nome dell’ute
 index - mostrare nome utente e categoria per ogni post.
 
 <!-- Exercise completed -->
+
+## Esercizio (3):
+
+-   creare model e migration per una tabella “tags”
+
+-   attraverso un seeder, popolare la tabella tags
+
+-   mettere in relazione Many to Many i model Post e Tag
+
+-   creare la tabella ponte per tale relazione
+
+-   dalla view edit e create, permettere all’utente di scegliere i tag da associare ad un post, tramite checkbox
+
+-   validate i tag inseriti assicurandovi che esistono a DB tramite la validazione apposta
+
+-   in fase di salvataggio, usare “detach()” e “attach()” oppure “sync()”
+
+-   nella SHOW, mostrare i tag per il post corrente.
