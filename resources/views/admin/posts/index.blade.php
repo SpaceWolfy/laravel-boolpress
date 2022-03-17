@@ -17,6 +17,11 @@
       @foreach ($dataPosts as $post)
         <div class="my-actions-cont">
           <div>
+            @php
+              $mydate = $post->created_at->format('d-m-Y, H:i');
+            @endphp
+
+
             {{$post->postTitle}} 
 
             @if($post->category !== null)
@@ -24,7 +29,14 @@
             @endif
 
             <div class="my-personal-info">
-              {{$post->user->name}} - {{$post->created_at}}
+              {{$post->user->name}} - 
+
+              @if($post->created_at->diffInHours() > 12)
+                {{$post->created_at->diffForHumans()}}
+                @else
+                {{$mydate}}
+              @endif
+              
             </div>
           </div>
 
