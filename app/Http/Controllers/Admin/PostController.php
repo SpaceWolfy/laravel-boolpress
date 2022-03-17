@@ -48,6 +48,7 @@ class PostController extends Controller
         $validated = $request->validate([
             'postTitle' => 'required|min:5|max:50',
             'postText' => 'required|min:10|max:400',
+            'postImage' => 'nullable',
             'category_id' => 'nullable|exists:categories,id',
             'tags' => 'nullable|exists:tags,id'
         ]);
@@ -139,6 +140,7 @@ class PostController extends Controller
         $validated = $request->validate([
             'postTitle' => 'required|min:5|max:50',
             'postText' => 'required|min:10|max:400',
+            'postImage' => 'nullable',
             'category_id' => 'nullable',
             'tags' => 'nullable|exists:tags,id'
         ]);
