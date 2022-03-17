@@ -21,10 +21,19 @@
             <h4> {{$newPost->postTitle}}</h4>
           </div>
           <div class="my-description-structure">{{$newPost->postText}}</div>
+
+          @if($newPost->postImage !== null)
+            <div class="my-postImage-structure">
+              <img src="{{$newPost->postImage}}" alt="image">
+            </div>
+          @endif
         </div>
         <div class="my-footer-infos">
           <div class="my-author-info">
-            {{$newPost->user->name}} <-> {{$newPost->created_at}}
+            @php
+              $mydate = $newPost->created_at->format('d-m-Y, H:i');
+            @endphp
+            {{$newPost->user->name}} - - {{$mydate}}
           </div>
     
           @if($newPost->category !== null)

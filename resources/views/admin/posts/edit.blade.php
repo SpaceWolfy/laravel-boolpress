@@ -25,6 +25,12 @@
     @enderror
   </div>
 
+  <div class="my-postImage">
+    <label>Aggiungi una foto al post</label>
+    
+    <input type="url" name="postImage" placeholder="Inserisci l'url di una foto" value="{{$newPost->postImage}}">
+  </div>
+
   {{-- Testo del post --}}
   <div class="my-text">
     <label>Contenuto del post</label>

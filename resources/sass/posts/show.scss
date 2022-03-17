@@ -15,6 +15,16 @@
                 text-align: center;
             }
 
+            .my-postImage-structure {
+                margin: 30px auto;
+                max-width: 300px;
+                max-height: 600px;
+
+                img {
+                    width: 100%;
+                }
+            }
+
             .my-footer-infos {
                 margin: 0 20px;
                 display: flex;

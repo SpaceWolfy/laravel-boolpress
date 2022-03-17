@@ -11140,6 +11140,16 @@ a.text-dark:focus {
   text-align: center;
 }
 
+.my-full-cont .my-posts-container .my-post-structure .my-postImage-structure {
+  margin: 30px auto;
+  max-width: 300px;
+  max-height: 600px;
+}
+
+.my-full-cont .my-posts-container .my-post-structure .my-postImage-structure img {
+  width: 100%;
+}
+
 .my-full-cont .my-posts-container .my-post-structure .my-footer-infos {
   margin: 0 20px;
   display: flex;
@@ -11182,13 +11192,15 @@ a.text-dark:focus {
 }
 
 .my-form-cont form .my-title,
-.my-form-cont form .my-text {
+.my-form-cont form .my-text,
+.my-form-cont form .my-postImage {
   display: flex;
   flex-direction: column;
 }
 
 .my-form-cont form .my-title label,
-.my-form-cont form .my-text label {
+.my-form-cont form .my-text label,
+.my-form-cont form .my-postImage label {
   font-size: 15px;
   margin-top: 10px;
 }
@@ -11203,7 +11215,7 @@ a.text-dark:focus {
 }
 
 .my-form-cont form textarea {
-  max-height: 400px;
+  max-height: 280px;
   margin-bottom: 15px;
 }
 
