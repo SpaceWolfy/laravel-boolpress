@@ -60,3 +60,15 @@ index - mostrare nome utente e categoria per ogni post.
 -   nella SHOW, mostrare i tag per il post corrente.
 
 <!-- Exercise Completed -->
+
+## Exercise (4):
+
+-   Formattare le date dei post mostrate nello show e nel index
+-   Usare il diffForHumans se la data è più recente di 12 ore.
+
+    <!--  BONUS -->
+
+-   Nella tabella posts, aggiungere una colonna dove salvare l’url di un' immagine di copertina del post.
+-   Mostrare l’immagine nellp show.
+
+<!-- Exercise & Bonus completed -->
