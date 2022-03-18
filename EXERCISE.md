@@ -72,3 +72,17 @@ index - mostrare nome utente e categoria per ogni post.
 -   Mostrare l’immagine nellp show.
 
 <!-- Exercise & Bonus completed -->
+
+## Exercise (5):
+
+-   Aggiungere una rotta API per l’index dei post
+-   Creare il controller relativo nella cartella API/
+-   Far ritornare l’elenco dei post con anche i dettagli utente, tag e categorie.
+-   Lato Vue.js eseguire la chiamata api per recuperare i post
+-   Stamparli tramite delle card
+
+    <!-- BONUS -->
+
+-   Paginare i risultati visualizzati
+
+<!-- Exercise completed -->
