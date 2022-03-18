@@ -1,40 +1,60 @@
 <template>
-    <div class="container my-margin">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card my-card">
-                    <div class="card-header my-cHeader">
-                        Esempio dell'uso di Vue
-                    </div>
+    <div>
+        <header><Navbar></Navbar></header>
 
-                    <div class="card-body my-cBody">
-                        Sono un esempio, che figo!
-                    </div>
-                </div>
+        <main class="container">
+            <h1>Post pubblicati</h1>
+
+            <div class="my-card-cont">
+                <post-card
+                    v-for="post of postToPrint"
+                    :key="post.id"
+                    :post="post"
+                ></post-card>
             </div>
-        </div>
+        </main>
     </div>
 </template>
 
 <script>
+import Navbar from "../components/Navbar.vue";
+import PostCard from "../components/PostCard.vue";
+import axios from "axios";
+
 export default {
     name: "Userpage",
+    components: { Navbar, PostCard },
+    data() {
+        return { postToPrint: [] };
+    },
+
+    methods: {
+        decodePostJson() {
+            axios.get("/api/posts").then((resp) => {
+                this.postToPrint = resp.data;
+            });
+        },
+    },
+
+    mounted() {
+        this.decodePostJson();
+    },
 };
 </script>
 
 <style lang="scss" scoped>
-.my-margin {
-    margin-top: 30px;
+main {
+    margin-top: 100px;
 
-    .my-card {
-        background-color: black;
-        color: yellowgreen;
-        border: 5px solid rgb(126, 209, 2);
+    h1 {
+        color: rgb(14, 126, 231);
+    }
 
-        .my-cHeader,
-        my-cBody {
-            border-color: rgb(126, 209, 2);
-        }
+    .my-card-cont {
+        margin-top: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
 </style>
