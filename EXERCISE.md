@@ -85,4 +85,4 @@ index - mostrare nome utente e categoria per ogni post.
 
 -   Paginare i risultati visualizzati
 
-<!-- Exercise completed -->
+<!-- Exercise  & Bonus completed -->
