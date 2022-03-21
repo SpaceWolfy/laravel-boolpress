@@ -86,3 +86,20 @@ index - mostrare nome utente e categoria per ogni post.
 -   Paginare i risultati visualizzati
 
 <!-- Exercise  & Bonus completed -->
+
+## Exercise (6):
+
+-   Installare vue router
+-   Configurare e attivare vue router su vue (router.js e vue.js)
+-   Dentro router.js, creare le seguenti rotte: home (homepage del sito) - dovrete spostare il contenuto da app.vue in home.vue
+    app.vue occorre aggiungere il componente router-view
+    contatti (può contenere solo un h1)
+    posts.show (dettagli di un post)
+
+-   Nella navbar, creare i relativi link usando router-link. (usate un array per stampare i vari link)
+
+<!-- BONUS -->
+
+-   Creare la pagina di gestione errori
+-   Tramite param o query, passare a questa pagina il codice dell’errore.
+-   Pagina contatti, creare un form da inviare al server tramite api
