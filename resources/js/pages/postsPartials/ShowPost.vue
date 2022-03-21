@@ -52,7 +52,7 @@ export default {
                 );
                 this.postDet = resp.data;
             } catch (er) {
-                this.$router.replace({ name: "error" });
+                this.$router.replace({ name: "ErrorPage" });
             }
         },
     },

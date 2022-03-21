@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "./pages/Home.vue";
 import Contacts from "./pages/Contacts.vue";
 import ShowPost from "./pages/postsPartials/ShowPost.vue";
+import ErrorPage from "./pages/ErrorPage.vue";
 
 //avendo indicato tramite metodo statico a vue che vogliamo usare VueRouter, allora vue farà sì che venga aggiunta da vue router la chiave router
 Vue.use(VueRouter);
@@ -27,6 +28,11 @@ const router = new VueRouter({
             component: ShowPost,
             name: "posts.show",
             meta: { title: "Show Post" },
+        },
+        {
+            path: "*",
+            component: ErrorPage,
+            name: "ErrorPage",
         },
     ],
 });
