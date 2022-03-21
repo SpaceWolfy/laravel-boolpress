@@ -6,26 +6,37 @@
                     <h5 class="card-title">
                         {{ post.postTitle }} -
                         <span>{{ post.user.name }}</span> -
-                        <span>{{ post.created_at }}</span>
+                        <span>{{ dateFormat(post.created_at) }}</span>
                     </h5>
                     <div class="card-text">
                         {{ post.postText }}
                     </div>
 
                     <div class="secondary-infos">
+                        <div>
+                            <router-link
+                                :to="{
+                                    name: 'posts.show',
+                                    params: { post: post.slug },
+                                }"
+                                >Dettagli</router-link
+                            >
+                        </div>
+
                         <div class="my-category">
                             <i class="fa-solid fa-caret-right"></i>
                             <span>Category:</span>
                             <div class="cat-class" v-if="post.category">
                                 {{ post.category.catName }}
                             </div>
+                            <div v-else>Nessuna Categoria selezionata</div>
                         </div>
 
                         <div class="my-tags">
                             <i class="fa-solid fa-caret-right"></i>
                             <span>Tags:</span>
 
-                            <div v-if="post.tags.type !== null" class="d-flex">
+                            <div v-if="post.tags.length !== 0" class="d-flex">
                                 <div
                                     class="tags-class"
                                     v-for="tag of post.tags"
@@ -34,6 +45,8 @@
                                     {{ tag.type }}
                                 </div>
                             </div>
+
+                            <div v-else>Nessun tag presente</div>
                         </div>
                     </div>
                 </div>
@@ -48,9 +61,15 @@
 </template>
 
 <script>
+import dayjs from "dayjs";
 export default {
     props: {
         post: Object,
+    },
+    methods: {
+        dateFormat(date) {
+            return dayjs(date).format("DD/MM/YYYY");
+        },
     },
 };
 </script>
