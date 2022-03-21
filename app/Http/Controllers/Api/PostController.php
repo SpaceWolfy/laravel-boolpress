@@ -21,4 +21,17 @@ class PostController extends Controller
 
         return response()->json($posts);
     }
+
+    public function show($slug)
+    {
+        $postDetails = Post::where("slug", $slug)
+            ->with(["tags", "user", "category"])
+            ->first();
+
+        if (!$postDetails) {
+            abort(404);
+        }
+
+        return response()->json($postDetails);
+    }
 }
