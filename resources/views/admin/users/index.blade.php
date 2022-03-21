@@ -9,8 +9,7 @@
 <div class="my-posts-container">
  <div class="my-posts-section">
     <div class="my-top-nav">
-      <h2>Gestisci i post</h2>
-      <a class="" href="{{ route('admin.posts.create') }}">Aggiungi un post</a>
+      <h2>Utenti registrati</h2>
     </div>
 
 
