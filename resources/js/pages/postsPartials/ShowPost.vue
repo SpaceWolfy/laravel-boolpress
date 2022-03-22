@@ -20,7 +20,7 @@
                 <i class="fa-solid fa-caret-right"></i>
                 <span>Tags:</span>
 
-                <div v-if="postDet.tags.length !== 0" class="d-flex">
+                <div class="d-flex">
                     <div
                         class="tags-class"
                         v-for="tag of postDet.tags"
@@ -29,8 +29,9 @@
                         {{ tag.type }}
                     </div>
                 </div>
-
-                <div v-else>Nessun tag presente</div>
+                <div v-if="postDet.tags">
+                    <div v-if="!postDet.tags.length">Nessun tag presente</div>
+                </div>
             </div>
         </div>
     </div>
