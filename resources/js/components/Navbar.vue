@@ -24,22 +24,47 @@
                         route.meta.linkText
                     }}</router-link>
                 </li>
+
+                <li>
+                    <a class="nav-link" href="/login" v-if="!user">Login</a>
+                    <a class="nav-link" href="/admin" v-else>{{ user.name }}</a>
+                </li>
             </ul>
         </div>
     </nav>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     data() {
         return {
             routesArray: [],
+            user: null,
         };
+    },
+    methods: {
+        decodeUser() {
+            axios
+                .get("/api/user")
+                .then((resp) => {
+                    console.log(resp.data);
+                    this.user = resp.data;
+                    localStorage.setItem("user", JSON.stringify(resp.data));
+                })
+                .catch((er) => {
+                    console.log("User non loggato");
+                    localStorage.removeItem("user");
+                });
+        },
     },
     mounted() {
         this.routesArray = this.$router
             .getRoutes()
             .filter((route) => !!route.meta.linkText);
+
+        this.decodeUser();
     },
 };
 </script>

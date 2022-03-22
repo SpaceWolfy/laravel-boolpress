@@ -1920,6 +1920,8 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1951,16 +1953,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      routesArray: []
+      routesArray: [],
+      user: null
     };
+  },
+  methods: {
+    decodeUser: function decodeUser() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/user").then(function (resp) {
+        console.log(resp.data);
+        _this.user = resp.data;
+        localStorage.setItem("user", JSON.stringify(resp.data));
+      })["catch"](function (er) {
+        console.log("User non loggato");
+        localStorage.removeItem("user");
+      });
+    }
   },
   mounted: function mounted() {
     this.routesArray = this.$router.getRoutes().filter(function (route) {
       return !!route.meta.linkText;
     });
+    this.decodeUser();
   }
 });
 
@@ -2062,11 +2086,118 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      isSubmitted: false,
+      subData: {
+        name: "",
+        email: "",
+        message: ""
+      }
+    };
+  },
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var ans;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/contacts", _this.subData);
+
+              case 3:
+                ans = _context.sent;
+                _this.isSubmitted = true;
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                alert("è stato riscontrato un errore, la preghiamo di reinviare il form");
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
+    }
+  }
+});
 
 /***/ }),
 
@@ -2212,6 +2343,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -4445,21 +4577,37 @@ var render = function () {
         _c(
           "ul",
           { staticClass: "navbar-nav" },
-          _vm._l(_vm.routesArray, function (route) {
-            return _c(
-              "li",
-              { key: route.path, staticClass: "nav-item active" },
-              [
-                _c(
-                  "router-link",
-                  { staticClass: "nav-link", attrs: { to: route.path } },
-                  [_vm._v(_vm._s(route.meta.linkText))]
-                ),
-              ],
-              1
-            )
-          }),
-          0
+          [
+            _vm._l(_vm.routesArray, function (route) {
+              return _c(
+                "li",
+                { key: route.path, staticClass: "nav-item active" },
+                [
+                  _c(
+                    "router-link",
+                    { staticClass: "nav-link", attrs: { to: route.path } },
+                    [_vm._v(_vm._s(route.meta.linkText))]
+                  ),
+                ],
+                1
+              )
+            }),
+            _vm._v(" "),
+            _c("li", [
+              !_vm.user
+                ? _c(
+                    "a",
+                    { staticClass: "nav-link", attrs: { href: "/login" } },
+                    [_vm._v("Login")]
+                  )
+                : _c(
+                    "a",
+                    { staticClass: "nav-link", attrs: { href: "/admin" } },
+                    [_vm._v(_vm._s(_vm.user.name))]
+                  ),
+            ]),
+          ],
+          2
         ),
       ]
     ),
@@ -4629,16 +4777,136 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("h2", [_vm._v("Contatti")]),
+    _vm._v(" "),
+    !_vm.isSubmitted
+      ? _c("div", [
+          _c("div", { staticClass: "mb-3" }, [
+            _c(
+              "label",
+              {
+                staticClass: "form-label",
+                attrs: { for: "exampleFormControlInput1" },
+              },
+              [_vm._v("Nome e cognome")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.subData.name,
+                  expression: "subData.name",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "exampleFormControlInput1",
+                placeholder: "Nome Cognome",
+              },
+              domProps: { value: _vm.subData.name },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.subData, "name", $event.target.value)
+                },
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-3" }, [
+            _c(
+              "label",
+              {
+                staticClass: "form-label",
+                attrs: { for: "exampleFormControlInput1" },
+              },
+              [_vm._v("Indirizzo Email")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.subData.email,
+                  expression: "subData.email",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "email",
+                id: "exampleFormControlInput1",
+                placeholder: "name@example.com",
+              },
+              domProps: { value: _vm.subData.email },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.subData, "email", $event.target.value)
+                },
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-3" }, [
+            _c(
+              "label",
+              {
+                staticClass: "form-label",
+                attrs: { for: "exampleFormControlTextarea1" },
+              },
+              [_vm._v("Lasciaci un Messaggio!")]
+            ),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.subData.message,
+                  expression: "subData.message",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: { id: "exampleFormControlTextarea1", rows: "3" },
+              domProps: { value: _vm.subData.message },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.subData, "message", $event.target.value)
+                },
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "submit" },
+                on: { click: _vm.submit },
+              },
+              [_vm._v("\n                Invio\n            ")]
+            ),
+          ]),
+        ])
+      : _c("div", [
+          _c("h1", [_vm._v("Il form è stato inviato correttamente")]),
+        ]),
+  ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("Contacts")])])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -4790,22 +5058,28 @@ var render = function () {
         _vm._v(" "),
         _c("span", [_vm._v("Tags:")]),
         _vm._v(" "),
-        _vm.postDet.tags.length !== 0
-          ? _c(
-              "div",
-              { staticClass: "d-flex" },
-              _vm._l(_vm.postDet.tags, function (tag) {
-                return _c("div", { key: tag.id, staticClass: "tags-class" }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(tag.type) +
-                      "\n                "
-                  ),
-                ])
-              }),
-              0
-            )
-          : _c("div", [_vm._v("Nessun tag presente")]),
+        _c(
+          "div",
+          { staticClass: "d-flex" },
+          _vm._l(_vm.postDet.tags, function (tag) {
+            return _c("div", { key: tag.id, staticClass: "tags-class" }, [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(tag.type) +
+                  "\n                "
+              ),
+            ])
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _vm.postDet.tags
+          ? _c("div", [
+              !_vm.postDet.tags.length
+                ? _c("div", [_vm._v("Nessun tag presente")])
+                : _vm._e(),
+            ])
+          : _vm._e(),
       ]),
     ]),
   ])
