@@ -19,6 +19,14 @@ class PostController extends Controller
             'postsData' => $posts
         ]); */
 
+        //per visualizzare le immagini inviate dal backend
+        $posts->each(function ($post) {
+            //formo l'url completo per l'immagine del post
+            if ($post->postImage) {
+                $post->postImage = asset('storage/' . $post->postImage);
+            }
+        });
+
         return response()->json($posts);
     }
 

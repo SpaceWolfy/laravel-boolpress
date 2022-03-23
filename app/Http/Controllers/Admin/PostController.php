@@ -9,6 +9,7 @@ use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -88,6 +89,15 @@ class PostController extends Controller
         /* Assegno il valore slug al post */
         $newPost->slug = $slug;
         $newPost->user_id = Auth::user()->id;
+
+        if (key_exists('postImage', $validated)) {
+
+            $postImage = Storage::put('postCovers', $validated['postImage']);
+
+            $newPost->postImage = $postImage;
+            $newPost->save();
+        }
+
         $newPost->save($validated);
 
         //aggiungo le relazion icon i tag ricevuti
@@ -183,17 +193,20 @@ class PostController extends Controller
             $validated['slug'] = $slug;
         }
 
+
+
         $newPost->update($validated);
 
-        /* Aggiornamento informazioni tabella post_tag */
-        //Per il post corrente, dalla tabella ponte, vado a rimuovere tutte le relazioni esistenti con i tag
-        /* $newPost->tags()->detach(); */
+        if (key_exists('postImage', $validated)) {
+            if ($newPost->postImage) {
+                Storage::delete($newPost->postImage);
+            }
 
-        //aggiungo le relazion icon i tag ricevuti
-        /* $newPost->tags()->attach($validated['tags']); */
+            $postImg = Storage::put('postCovers', $validated['postImage']);
 
-        /* Confronta i dati presenti su db e in caso fa detach(solo degli elementi precedenti) e attach(solo dei nuovi elementi) 
-        - I tag presenti in entrambi i francenti non verranno toccati*/
+            $newPost->postImage = $postImg;
+            $newPost->save();
+        }
 
         if (key_exists('tags', $validated)) {
             $newPost->tags()->sync($validated['tags']);
@@ -215,6 +228,10 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
 
         $post->tags()->detach();
+
+        if ($post->postImage) {
+            Storage::delete($post->postImage);
+        }
 
         $post->delete();
 
