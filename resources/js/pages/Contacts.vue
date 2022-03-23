@@ -40,6 +40,27 @@
                 ></textarea>
             </div>
 
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01"
+                        >Upload</span
+                    >
+                </div>
+                <div class="custom-file">
+                    <input
+                        type="file"
+                        class="custom-file-input"
+                        id="inputGroupFile01"
+                        @change="onAttachmentChange"
+                        placeholder="Inserisci l'url di una foto"
+                    />
+                    <label
+                        class="custom-file-label"
+                        for="inputGroupFile01"
+                    ></label>
+                </div>
+            </div>
+
             <div>
                 <button type="submit" class="btn btn-primary" @click="submit">
                     Invio
@@ -59,19 +80,35 @@ export default {
     data() {
         return {
             isSubmitted: false,
-            subData: { name: "", email: "", message: "" },
+            subData: { name: "", email: "", message: "", uploadedFile: null },
         };
     },
     methods: {
         async submit() {
             try {
-                const ans = await axios.post("/api/contacts", this.subData);
+                const formDataInstance = new FormData();
+                formDataInstance.append("name", this.subData.name);
+                formDataInstance.append("email", this.subData.email);
+                formDataInstance.append("message", this.subData.message);
+                formDataInstance.append(
+                    "uploadedFile",
+                    this.subData.uploadedFile
+                );
+
+                const ans = await axios.post("/api/contacts", formDataInstance);
                 this.isSubmitted = true;
             } catch (er) {
                 alert(
                     "è stato riscontrato un errore, la preghiamo di reinviare il form"
                 );
             }
+        },
+
+        onAttachmentChange(event) {
+            //in questo modo leggo l'evento dei file scelti dall'user attraverso l'input
+            //event.target.files;
+
+            this.subData.uploadedFile = event.target.files[0];
         },
     },
 };
