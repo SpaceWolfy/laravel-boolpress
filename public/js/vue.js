@@ -2151,6 +2151,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2159,7 +2180,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       subData: {
         name: "",
         email: "",
-        message: ""
+        message: "",
+        uploadedFile: null
       }
     };
   },
@@ -2168,33 +2190,43 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var ans;
+        var formDataInstance, ans;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/contacts", _this.subData);
+                formDataInstance = new FormData();
+                formDataInstance.append("name", _this.subData.name);
+                formDataInstance.append("email", _this.subData.email);
+                formDataInstance.append("message", _this.subData.message);
+                formDataInstance.append("uploadedFile", _this.subData.uploadedFile);
+                _context.next = 8;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/contacts", formDataInstance);
 
-              case 3:
+              case 8:
                 ans = _context.sent;
                 _this.isSubmitted = true;
-                _context.next = 10;
+                _context.next = 15;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 12:
+                _context.prev = 12;
                 _context.t0 = _context["catch"](0);
                 alert("è stato riscontrato un errore, la preghiamo di reinviare il form");
 
-              case 10:
+              case 15:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[0, 12]]);
       }))();
+    },
+    onAttachmentChange: function onAttachmentChange(event) {
+      //in questo modo leggo l'evento dei file scelti dall'user attraverso l'input
+      //event.target.files;
+      this.subData.uploadedFile = event.target.files[0];
     }
   }
 });
@@ -4889,6 +4921,27 @@ var render = function () {
             }),
           ]),
           _vm._v(" "),
+          _c("div", { staticClass: "input-group mb-3" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "custom-file" }, [
+              _c("input", {
+                staticClass: "custom-file-input",
+                attrs: {
+                  type: "file",
+                  id: "inputGroupFile01",
+                  placeholder: "Inserisci l'url di una foto",
+                },
+                on: { change: _vm.onAttachmentChange },
+              }),
+              _vm._v(" "),
+              _c("label", {
+                staticClass: "custom-file-label",
+                attrs: { for: "inputGroupFile01" },
+              }),
+            ]),
+          ]),
+          _vm._v(" "),
           _c("div", [
             _c(
               "button",
@@ -4906,7 +4959,23 @@ var render = function () {
         ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "span",
+        {
+          staticClass: "input-group-text",
+          attrs: { id: "inputGroupFileAddon01" },
+        },
+        [_vm._v("Upload")]
+      ),
+    ])
+  },
+]
 render._withStripped = true
 
 
