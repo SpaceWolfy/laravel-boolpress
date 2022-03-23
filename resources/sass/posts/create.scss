@@ -3,10 +3,13 @@
     height: 500px;
     margin: 110px auto 320px auto;
 
+    .my-postImage {
+        margin-top: 10px;
+    }
+
     form {
         .my-title,
-        .my-text,
-        .my-postImage {
+        .my-text {
             display: flex;
             flex-direction: column;
 

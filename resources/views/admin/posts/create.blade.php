@@ -10,7 +10,7 @@
   <div><h1>Aggiungi un nuovo post:</h1></div>
   
 
- <form action="{{ route('admin.posts.store') }}" method="post">
+ <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
   @csrf
 
   {{-- Titolo del post --}}
@@ -24,10 +24,22 @@
     @enderror
   </div>
 
-  <div class="my-postImage">
+  {{-- <div class="my-postImage">
     <label>Aggiungi una foto al post</label>
     
     <input type="url" name="postImage" placeholder="Inserisci l'url di una foto" value="{{old('postImage')}}">
+  </div> --}}
+  <div class="my-postImage">
+    <label>Aggiungi una foto al post</label>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="postImage" placeholder="Inserisci l'url di una foto">
+        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+      </div>
+    </div>
   </div>
 
   {{-- Testo del post --}}

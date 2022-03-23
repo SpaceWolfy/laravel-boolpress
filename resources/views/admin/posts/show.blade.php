@@ -24,7 +24,7 @@
 
           @if($newPost->postImage !== null)
             <div class="my-postImage-structure">
-              <img src="{{$newPost->postImage}}" alt="image">
+              <img src="{{asset('storage/' . $newPost->postImage)}}" alt="image">
             </div>
           @endif
         </div>
