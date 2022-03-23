@@ -11005,7 +11005,7 @@ a.text-dark:focus {
 /* End section */
 
 .spam-cont {
-  height: 100px;
+  height: 80px;
   background-color: #ffffff;
   display: flex;
   justify-content: center;
@@ -11191,16 +11191,18 @@ a.text-dark:focus {
   margin: 110px auto 320px auto;
 }
 
+.my-form-cont .my-postImage {
+  margin-top: 10px;
+}
+
 .my-form-cont form .my-title,
-.my-form-cont form .my-text,
-.my-form-cont form .my-postImage {
+.my-form-cont form .my-text {
   display: flex;
   flex-direction: column;
 }
 
 .my-form-cont form .my-title label,
-.my-form-cont form .my-text label,
-.my-form-cont form .my-postImage label {
+.my-form-cont form .my-text label {
   font-size: 15px;
   margin-top: 10px;
 }
@@ -11246,6 +11248,15 @@ a.text-dark:focus {
 
 .btn-group .btn-primary:not(:disabled):not(.disabled).active {
   background-color: #0e7ee7;
+}
+
+.btn-group > .btn:focus,
+.btn-group > .btn:active,
+.btn-group > .btn.active,
+.btn-group-vertical > .btn:focus,
+.btn-group-vertical > .btn:active,
+.btn-group-vertical > .btn.active {
+  z-index: 0;
 }
 
 /* @import "./posts/edit"; */
