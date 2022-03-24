@@ -90,16 +90,19 @@ export default {
                 formDataInstance.append("name", this.subData.name);
                 formDataInstance.append("email", this.subData.email);
                 formDataInstance.append("message", this.subData.message);
-                formDataInstance.append(
-                    "uploadedFile",
-                    this.subData.uploadedFile
-                );
+                if (this.subData.uploadedFile !== null) {
+                    formDataInstance.append(
+                        "uploadedFile",
+                        this.subData.uploadedFile
+                    );
+                }
 
                 const ans = await axios.post("/api/contacts", formDataInstance);
                 this.isSubmitted = true;
             } catch (er) {
                 alert(
-                    "è stato riscontrato un errore, la preghiamo di reinviare il form"
+                    "è stato riscontrato un errore, la preghiamo di reinviare il form" +
+                        er.response.data.message
                 );
             }
         },
