@@ -11261,6 +11261,13 @@ a.text-dark:focus {
 
 /* @import "./posts/edit"; */
 
+.testing-style {
+  background-color: black;
+  color: white;
+  line-height: 25px;
+  padding: 20px 40px;
+}
+
 body {
   background-color: #e4eeff;
   font-family: "Roboto", sans-serif;

@@ -2200,7 +2200,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formDataInstance.append("name", _this.subData.name);
                 formDataInstance.append("email", _this.subData.email);
                 formDataInstance.append("message", _this.subData.message);
-                formDataInstance.append("uploadedFile", _this.subData.uploadedFile);
+
+                if (_this.subData.uploadedFile !== null) {
+                  formDataInstance.append("uploadedFile", _this.subData.uploadedFile);
+                }
+
                 _context.next = 8;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/contacts", formDataInstance);
 
@@ -2213,7 +2217,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 12:
                 _context.prev = 12;
                 _context.t0 = _context["catch"](0);
-                alert("è stato riscontrato un errore, la preghiamo di reinviare il form");
+                alert("è stato riscontrato un errore, la preghiamo di reinviare il form" + _context.t0.response.data.message);
 
               case 15:
               case "end":
